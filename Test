@@ -1,19 +1,5 @@
-{
-    "name": "govcms/govcms",
-    "description": "Core for the govCMS Drupal distribution",
-    "keywords": ["govCMS"],
-    "type": "drupal-profile",
-    "license": "GPL-2.0+",
-    "repositories": {
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    },
-    "require": {
-        "php": ">=5.6",
-        "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.5.0",
+Require
+
         "drupal-composer/drupal-scaffold": "^2.1.0",
         "drupal/core": "8.3.1",
         "acquia/lightning": "^2.1.3",
@@ -104,68 +90,3 @@
         "drupal/webform": "^5.0@beta",
         "drupal/workbench_moderation": "^1.2",
         "drupal/workspace": "^1.0@alpha",
-        "govcms/govcms-ui": "dev-master"
-    },
-    "require-dev": {
-        "behat/mink": "~1.7",
-        "behat/mink-goutte-driver": "~1.2",
-        "composer/composer": "^1.4",
-        "drupal/coder": "^2.0",
-        "drupal/console": "^1.0",
-        "drush/drush": "8.1.11",
-        "phing/phing": "^2.15",
-        "phpunit/phpunit": "~4.8",
-        "squizlabs/php_codesniffer": "^2.8"
-    },
-    "extra": {
-        "drupal-scaffold": {
-            "initial": {
-                "sites/default/default.services.yml": "sites/default/services.yml",
-                "sites/default/default.settings.php": "sites/default/settings.php"
-            },
-            "excludes": [
-                "sites/development.services.yml"
-            ]
-        },
-        "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
-            "docroot/profiles/{$name}": ["type:drupal-profile"],
-            "docroot/profiles/{$name}": ["type:drupal-custom-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"],
-            "docroot/libraries/{$name}": ["type:drupal-library"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
-        },
-        "patches": {}
-    },
-    "autoload": {
-        "psr-4": {
-            "govCMS\\Core\\": "src"
-        }
-    },
-    "config": {
-        "bin-dir": "bin/",
-        "preferred-install": "dist"
-    },
-    "conflict": {
-        "drupal/core": "7.*"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "@composer drupal-scaffold",
-            "./bin/phing push"
-        ],
-        "post-update-cmd": [
-            "./bin/phing push",
-            "./bin/phing package"
-        ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
-    },
-    "suggest": {
-        "hirak/prestissimo": "^0.3"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
-}
